@@ -1,4 +1,4 @@
-module github.com/guilhermeonrails/api-go-gin
+module github.com/lucio-iot-dev/api_rest_gin_go_testes_validacoes
 
 go 1.16
 

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/guilhermeonrails/api-go-gin/database"
-	"github.com/guilhermeonrails/api-go-gin/routes"
+	"github.com/lucio-iot-dev/api_rest_gin_go_testes_validacoes/database"
+	"github.com/lucio-iot-dev/api_rest_gin_go_testes_validacoes/routes"
 )
 
 func main() {

@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres-data:/var/lib/postgresql
+      - /home/lucio/github.com/lucio-iot-dev/api_rest_gin_go_testes_validacoes/postgres-data
 
   pgadmin-compose:
     image: dpage/pgadmin4

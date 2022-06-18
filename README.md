@@ -43,7 +43,7 @@ Outra utilidade desta aplicação é estudar e treinar testes e validações uti
 
 ## :memo: Licença
 
-Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/lucio-iot-dev/gin-api-go-rest/blob/main/LICENSE) para mais detalhes.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](https://github.com/lucio-iot-dev/api_rest_gin_go_testes_validacoes/blob/main/LICENSE) para mais detalhes.
 
 
 Dev: Lúcio do Nascimento.

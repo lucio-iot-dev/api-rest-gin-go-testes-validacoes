@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
@@ -17,6 +16,7 @@ import (
 var ID int
 
 func SetupDasRotasDeTeste() *gin.Engine {
+	gin.SetMode(gin.ReleaseMode)
 	rotas := gin.Default()
 	return rotas
 }
@@ -47,12 +47,23 @@ func TestVerificaStatusCodeDaSaudacaoComParametro(t *testing.T) {
 func TestListandoTodosOsAlunosHandler(t *testing.T) {
 	database.ConectaComBancoDeDados()
 	CriaAlunoMock()
+	defer DeleteAlunoMock()
 	r := SetupDasRotasDeTeste()
 	r.GET("/alunos", controllers.ExibeTodosAlunos)
 	req, _ := http.NewRequest("GET", "/alunos", nil)
 	resposta := httptest.NewRecorder()
 	r.ServeHTTP(resposta, req)
 	assert.Equal(t, http.StatusOK, resposta.Code)
-	fmt.Println(resposta.Body)
+}
+
+func TestBuscaAlunoPorCPFHandler(t *testing.T) {
+	database.ConectaComBancoDeDados()
+	CriaAlunoMock()
 	defer DeleteAlunoMock()
+	r := SetupDasRotasDeTeste()
+	r.GET("/alunos/cpf/:cpf", controllers.BuscaAlunoPorCPF)
+	req, _ := http.NewRequest("GET", "/alunos/cpf/123456789", nil)
+	resposta := httptest.NewRecorder()
+	r.ServeHTTP(resposta, req)
+	assert.Equal(t, http.StatusOK, resposta.Code)
 }

@@ -71,20 +71,32 @@ func TestBuscaAlunoPorCPFHandler(t *testing.T) {
 }
 
 func TestBuscaAlunoPorIDHandler(t *testing.T) {
-	 database.ConectaComBancoDeDados()
-	 CriaAlunoMock()
-	 defer DeleteAlunoMock()
-	 r := SetupDasRotasDeTeste()
-	 r.GET("/alunos/:id", controllers.BuscaAlunoPorID)
-   pathDaBusca := "/alunos/" + strconv.Itoa(ID)
+	database.ConectaComBancoDeDados()
+	CriaAlunoMock()
+	defer DeleteAlunoMock()
+	r := SetupDasRotasDeTeste()
+	r.GET("/alunos/:id", controllers.BuscaAlunoPorID)
+	pathDaBusca := "/alunos/" + strconv.Itoa(ID)
 	req, _ := http.NewRequest("GET", pathDaBusca, nil)
 	resposta := httptest.NewRecorder()
 	r.ServeHTTP(resposta, req)
-  var alunoMock models.Aluno
+	var alunoMock models.Aluno
 	json.Unmarshal(resposta.Body.Bytes(), &alunoMock)
 	assert.Equal(t, "Nome do Aluno Teste", alunoMock.Nome)
 	assert.Equal(t, "12345678901", alunoMock.CPF)
 	assert.Equal(t, "123456789", alunoMock.RG)
 	assert.Equal(t, http.StatusOK, resposta.Code)
 
+}
+
+func TestDeletaAlunoHandler(t *testing.T) {
+	database.ConectaComBancoDeDados()
+	CriaAlunoMock()
+	r := SetupDasRotasDeTeste()
+	r.DELETE("alunos/:id", controllers.DeletaAluno)
+	pathDeBusca := "/alunos/" + strconv.Itoa(ID)
+	req, _ := http.NewRequest("DELETE", pathDeBusca, nil)
+	resposta := httptest.NewRecorder()
+	r.ServeHTTP(resposta, req)
+	assert.Equal(t, http.StatusOK, resposta.Code)
 }

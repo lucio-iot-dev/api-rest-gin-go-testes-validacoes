@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lucio-iot-dev/api_rest_gin_go_testes_validacoes/database"
-	"github.com/lucio-iot-dev/api_rest_gin_go_testes_validacoes/models"
+	"github.com/lucio-iot-dev/api-rest-gin-go-testes-validacoes/database"
+	"github.com/lucio-iot-dev/api-rest-gin-go-testes-validacoes/models"
 )
 
 func ExibeTodosAlunos(c *gin.Context) {

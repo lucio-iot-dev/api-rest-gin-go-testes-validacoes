@@ -1,4 +1,4 @@
-module github.com/lucio-iot-dev/api_rest_gin_go_testes_validacoes
+module github.com/lucio-iot-dev/api-rest-gin-go-testes-validacoes
 
 go 1.16
 
